@@ -1,0 +1,60 @@
+Respostas a exercícios
+----------------------------------------------------------------
+1.
+----------------------------------------------------------------
+1.1 Setup
+
+Alterei a chave "Id" para "_id" de modo a ficar com a formatação bem reconhecida do mongodb
+Para isso, Utilizei o script formater.py que me deu como output o ficheiro plantas_final.json
+
+De seguida, utilizei o seguinte comando para importar para a minha db em mongo:
+mongoimport -d plantas -c plantas --file plantas.json --jsonArray para importar para mongo
+
+Recebi mensagem de sucesso para todos os documentos, ainda assim, Testei a db utilizando:
+mongosh
+show dbs
+use plantas
+show collections
+db.plantas.countDocuments() e devolveu-me o número de registos importados da plantas_final.json
+Tenho então a minha persistẽncia de dados em mongodb pronta
+
+----------------------------------------------------------------
+
+1.2 Queries (warm-up)
+
+    Quantos registos estão na base de dados;
+    db.plantas.countDocuments() ou db.plantas.count()
+
+    Quantos registos de plantação se encontram na freguesia "São Domingos de Rana"?
+    plantas> db.plantas.countDocuments({Freguesia: "São Domingos de Rana"})
+
+    Qual a lista de freguesias (ordenada alfabeticamente e sem repetições)?
+    db.plantas.distinct("Freguesia").sort()
+
+    Qual a distribuição dos registos por freguesia (quantos registos em cada freguesia)
+    db.plantas.aggregate([
+       {
+          $group:{
+             _id: "$Freguesia",
+             total: {$sum: 1}
+          }
+       }
+    ])
+
+    Qual a distribuição dos registos por espécie?
+    db.plantas.aggregate([
+       {
+          $group:{
+             _id: "$Espécie",
+             total: {$sum: 1}
+          }
+       }
+    ])
+
+----------------------------------------------------------------
+
+1.3 API de dados
+
+
+
+
