@@ -25,7 +25,7 @@ module.exports.getPlanta = id => {
 
 
 module.exports.getEspecieEEEE = specie => {
-    return Exame.find({especie: specie})
+    return Exame.find({Espécie: specie})
             .then(resposta => {
                 return resposta
             })
@@ -34,8 +34,8 @@ module.exports.getEspecieEEEE = specie => {
             })
 }
 
-module.exports.getImplanteAAAA = id => {
-    return Exame.find({implantacao: "AAA"})
+module.exports.getImplanteAAA = implant => {
+    return Exame.find({Implantação: implant})
             .then(resposta => {
                 return resposta
             })
@@ -47,7 +47,7 @@ module.exports.getImplanteAAAA = id => {
 module.exports.listfreguesias = () => {
     return Exame
         .aggregate(
-        { $group: { _id: "$freguesia" } },
+        { $group: { _id: Freguesia } },
         { $sort: { _id: 1 } }
             )
             .then(resposta => {

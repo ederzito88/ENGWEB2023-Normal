@@ -1,0 +1,30 @@
+extends layout
+block content
+  .w3-card-4
+    header.w3-container.w3-teal
+      h1= planta._id
+      //h2= planta.data
+    .w3-container
+      table.w3-table-all
+        tr
+          th id
+          th Rua
+          th Local
+          th Freguesia
+          th Estado
+          th Caldeira 
+          th Tutor
+          th Gestor
+
+          tr
+            td= planta._id
+            td= planta.Rua
+            td= planta.Local
+            td= planta.Freguesia
+            td=planta.Estado 
+            td= planta.Caldeira
+            td= planta.Tutor
+            td= planta.Gestor
+
+    button.w3-btn.w3-round.w3-indigo.w3-margin-right 
+                a(href="/") Voltar à página inicial
